@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div><a href="{% url 'active_tasks_list' %}">Активные задачи</a>
+ | <a href="{% url 'all_tasks_list' %}">Все задачи</a>
+{% if user.worker.position == 'director' %}
+ | <a href="{% url 'task_create' %}">Создать задачу</a></div>
+{% else %}</div>
+{% endif %}
+
+{% block tasks_content %}
+{% endblock tasks_content %}
+
+{% endblock content %}

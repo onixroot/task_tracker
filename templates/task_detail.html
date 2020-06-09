@@ -1,0 +1,16 @@
+{% extends 'tasks_base.html' %}
+
+{% block tasks_content %}
+
+<h4>Описание задачи</h4>
+<div>Название: {{ task.title }}</div>
+<div>Описание: {{ task.description }}</div>
+<div>Время создания: {{ task.creation_time }}</div>
+<div>Время на выполнение: {{ task.execution_time }} мин.</div>
+<div>Назначено на: {{ task.worker }}</div>
+<div>Статус: {{ task.get_status_display }}</div>
+
+{% block task_action %}
+{% endblock task_action %}
+
+{% endblock tasks_content %}

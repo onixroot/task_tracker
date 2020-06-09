@@ -1,0 +1,36 @@
+{% extends "tasks_base.html" %}
+
+{% block tasks_content %}
+
+<h4>Все задачи:</h4>
+
+{% if user.worker.position == "director" %}
+	{% for task in tasks %}
+		<div><a href="{% url 'task_update' task.id %}">{{ task.name_status }}</a></div>
+	{% endfor %}
+{% else %}
+	{% for task in tasks %}
+		<div><a href="{{ task.get_task_confirm_url }}">{{ task.name_status }}</a></div>
+	{% endfor %}
+{% endif %}
+
+
+{% if is_paginated %}
+	<h4>Страницы:</h4>
+	{% if page_obj.has_previous %}
+		<a href="?page={{ page_obj.previous_page_number }}"><</a>
+	{% else %}>{% endif %}
+	{% for n in page_obj.paginator.page_range %}
+		{% if page_obj.number == n %}
+			<a href="?page={{ n }}">|{{ n }}|</a>
+		{% endif %}
+		{% if page_obj.number != n %}
+			<a href="?page={{ n }}">{{ n }}</a>
+		{% endif %}
+	{% endfor %}
+	{% if page_obj.has_next %}
+		<a href="?page={{ page_obj.next_page_number }}">></a>
+	{% else %}<{% endif %}
+{% endif %}
+
+{% endblock tasks_content %}

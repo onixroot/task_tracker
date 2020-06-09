@@ -1,0 +1,9 @@
+{% extends 'task_detail.html' %}
+
+{% block task_action %}
+
+<form action="" method="post">{% csrf_token %}
+	<button style="margin-top: 10px;" type="submit">Готово</button>
+</form>
+
+{% endblock task_action %}

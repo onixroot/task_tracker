@@ -1,0 +1,13 @@
+{% extends 'tasks_base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block tasks_content %}
+
+<h4>Создать задачу</h4>
+<form action="" method="post">{% csrf_token %}
+	{{ form|crispy }}
+	<button style="margin-top: 10px" type="submit">Cоздать</button>
+</form>
+
+{% endblock tasks_content %}

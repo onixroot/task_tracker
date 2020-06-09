@@ -1,0 +1,16 @@
+{% extends 'tasks_base.html' %}
+
+{% block tasks_content %}
+
+<h4>Редактировать задачу</h4>
+<div>Название: {{ task.title }}</div>
+<div>Описание: {{ task.description }}</div>
+<div>Время создания: {{ task.creation_time }}</div>
+<div>Время на выполнение: {{ task.execution_time }} мин.</div>
+<div>Назначено на: {{ task.worker }}</div>
+<form action="" method="post">{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Изменить статус</button>
+</form>
+
+{% endblock tasks_content %}
